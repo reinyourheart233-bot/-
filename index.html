@@ -1,9 +1,11 @@
+页面仅供娱乐，详情请看@张凌赫z
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
-    <meta name="referrer" content="no-referrer"><title>张凌赫 · 凌赫红 | 官方粉丝主页</title>
+    <meta name="referrer" content="no-referrer">
+    <title>张凌赫 · 凌赫红 | 官方粉丝主页</title>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -15,22 +17,31 @@
         }
 
         body {
-            background: #fff5f5;
             font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', 'PingFang SC', Roboto, 'Helvetica Neue', sans-serif;
-            color: #1e1e2a;
+            color: white;
             line-height: 1.4;
+            background: #000;
+            background-image: url('https://images.pexels.com/photos/38001645/pexels-photo-38001645.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            /* 隐藏整个页面滚动条 (保留滚动功能) */
+            overflow-y: scroll;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE/Edge */
+        }
+        body::-webkit-scrollbar {
+            display: none; /* Chrome/Safari/Opera */
         }
 
-        /* 全局装饰背景 */
-        body::before {
-            content: "";
+        /* 深色遮罩增强文字对比度 */
+        .overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 10% 20%, rgba(151, 18, 48, 0.03) 0%, rgba(255,245,245,0.95) 90%);
-            pointer-events: none;
+            background: rgba(0, 0, 0, 0.6);
             z-index: -1;
         }
 
@@ -40,15 +51,17 @@
             max-width: 1600px;
             margin: 0 auto;
             background: transparent;
+            position: relative;
+            z-index: 1;
         }
 
-        /* 侧边栏 (玻璃质感) */
+        /* 侧边栏 */
         .sidebar {
             width: 280px;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(8px);
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(12px);
             border-radius: 0 32px 32px 0;
-            box-shadow: 12px 0 32px -12px rgba(0, 0, 0, 0.08);
+            box-shadow: 8px 0 20px rgba(0, 0, 0, 0.2);
             margin: 1rem 0 1rem 0;
             padding: 1.8rem 0 2rem 0;
             display: flex;
@@ -57,60 +70,59 @@
             top: 1rem;
             height: calc(100vh - 2rem);
             overflow-y: auto;
-            border-right: 1px solid rgba(151, 18, 48, 0.15);
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            /* 隐藏侧边栏滚动条 */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .sidebar::-webkit-scrollbar {
+            display: none;
         }
 
         .sidebar-avatar {
             text-align: center;
             padding: 0 1.2rem 1.2rem;
-            border-bottom: 2px solid #ffe0e5;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
             margin-bottom: 1.5rem;
         }
         .avatar-circle {
             width: 120px;
             height: 120px;
             margin: 0 auto 1rem;
-            background: linear-gradient(135deg, #ffe0e3, #fff0f2);
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 50%;
             overflow: hidden;
-            box-shadow: 0 15px 25px -8px rgba(151, 18, 48, 0.25);
-            border: 3px solid white;
-            outline: 1px solid #ffcdd6;
+            box-shadow: 0 15px 25px -8px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.5);
         }
         .avatar-circle img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
         }
         .sidebar-avatar h2 {
             font-size: 1.7rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #971230, #c94567);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            letter-spacing: -0.3px;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
         .sidebar-avatar .badge-role {
-            background: #fff0f2;
+            background: rgba(255, 255, 255, 0.2);
             display: inline-block;
             padding: 0.2rem 1rem;
             border-radius: 40px;
             font-size: 0.8rem;
             font-weight: 600;
-            color: #971230;
+            color: white;
             margin-top: 0.3rem;
-            box-shadow: inset 0 0 0 1px #ffcdd6;
         }
         .sidebar-bio {
             font-size: 0.85rem;
-            color: #8f6572;
+            color: rgba(255, 255, 255, 0.9);
             margin-top: 0.7rem;
-            background: #fff7f9;
+            background: rgba(0, 0, 0, 0.3);
             border-radius: 28px;
             padding: 8px 12px;
-            line-height: 1.4;
         }
 
         .side-nav {
@@ -126,10 +138,10 @@
             border-radius: 60px;
             font-size: 1rem;
             font-weight: 600;
-            color: #5c4a4f;
+            color: white;
             transition: all 0.25s ease;
             cursor: pointer;
-            background: transparent;
+            background: rgba(255, 255, 255, 0.05);
             border: none;
             width: 100%;
             text-align: left;
@@ -140,25 +152,23 @@
             font-size: 1.2rem;
         }
         .nav-item:hover {
-            background: #ffeef2;
-            color: #971230;
+            background: rgba(151, 18, 48, 0.7);
             transform: translateX(4px);
         }
         .nav-item.active {
             background: #971230;
             color: white;
-            box-shadow: 0 8px 18px rgba(151, 18, 48, 0.2);
+            box-shadow: 0 8px 18px rgba(151, 18, 48, 0.4);
         }
         .sidebar-footer {
             text-align: center;
             font-size: 0.7rem;
-            color: #cba5b2;
+            color: rgba(255, 255, 255, 0.7);
             padding-top: 1.5rem;
             margin-top: 1rem;
-            border-top: 1px solid #ffe2e7;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* 主内容区 */
         .main-content {
             flex: 1;
             padding: 1.5rem 2rem 2.5rem 2rem;
@@ -167,7 +177,7 @@
 
         .tab-pane {
             display: none;
-            animation: fadeInUp 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            animation: fadeInUp 0.4s ease;
         }
         .tab-pane.active-pane {
             display: block;
@@ -177,19 +187,14 @@
             to { opacity: 1; transform: translateY(0);}
         }
 
-        /* 卡片通用样式 (玻璃+圆角) */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(3px);
-            border-radius: 2rem;
-            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(151, 18, 48, 0.12);
-            transition: all 0.2s;
+        /* 卡片半透明 */
+        .info-card, .hero-banner, .media-card, .upcoming-card, .endorsement-card {
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-
-        /* 首页大图banner */
         .hero-banner {
-            background: linear-gradient(112deg, #fff0f3 0%, #ffe6eb 100%);
+            border-left: 8px solid #971230;
             border-radius: 2rem;
             padding: 1.8rem;
             margin-bottom: 2rem;
@@ -198,24 +203,21 @@
             gap: 2rem;
             flex-wrap: wrap;
             justify-content: space-between;
-            border-left: 8px solid #971230;
         }
         .hero-text h3 {
             font-size: 1.8rem;
             font-weight: 700;
-            color: #2d2327;
+            color: white;
         }
         .hero-text p {
-            color: #971230;
-            font-weight: 500;
+            color: #ffd9e0;
         }
         .hero-img {
             width: 100px;
             height: 100px;
-            background: #fff;
+            background: rgba(255,255,255,0.2);
             border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 12px 18px -6px rgba(0,0,0,0.1);
         }
         .hero-img img {
             width: 100%;
@@ -223,20 +225,16 @@
             object-fit: cover;
         }
 
-        /* 信息卡片内排版优化 */
         .info-card {
-            background: white;
             border-radius: 1.8rem;
             padding: 1.5rem 1.8rem;
             margin-bottom: 1.8rem;
-            box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.06);
-            border: 1px solid #ffe6ea;
         }
         .info-title {
             font-size: 1.3rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: #971230;
+            color: #ffb7c4;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -247,20 +245,20 @@
             gap: 1rem;
         }
         .info-item {
-            background: #fffafc;
+            background: rgba(255, 255, 255, 0.1);
             padding: 0.6rem 1rem;
             border-radius: 1.2rem;
-            font-size: 0.9rem;
             display: flex;
             align-items: center;
             gap: 8px;
+            color: white;
         }
         .info-item i {
             width: 24px;
-            color: #971230;
+            color: #ffb7c4;
         }
         .energy-bar {
-            background: linear-gradient(90deg, #fff0f3, #ffe6ea);
+            background: rgba(0, 0, 0, 0.4);
             border-radius: 2rem;
             padding: 0.8rem 1.2rem;
             margin-top: 1rem;
@@ -270,15 +268,14 @@
             gap: 1rem;
         }
         .energy-item {
-            font-weight: 600;
-            font-size: 0.85rem;
-            background: white;
+            background: rgba(255, 255, 255, 0.15);
             padding: 0.3rem 0.9rem;
             border-radius: 40px;
-            color: #971230;
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
         }
 
-        /* 剧集卡片网格 */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
@@ -286,26 +283,22 @@
             margin-top: 1rem;
         }
         .media-card {
-            background: white;
             border-radius: 1.5rem;
             overflow: hidden;
             transition: all 0.25s;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
             text-decoration: none;
-            color: inherit;
+            color: white;
             display: block;
-            border: 1px solid #ffe2e7;
         }
         .media-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 20px 28px -12px rgba(151, 18, 48, 0.2);
-            border-color: #ffb7c4;
+            background: rgba(0, 0, 0, 0.75);
+            border-color: #971230;
         }
         .card-cover {
             aspect-ratio: 16 / 9;
             width: 100%;
             object-fit: cover;
-            background: #fce8ec;
         }
         .card-info {
             padding: 0.8rem 0.7rem;
@@ -313,19 +306,72 @@
         .card-title {
             font-weight: 650;
             font-size: 0.85rem;
-            line-height: 1.35;
         }
 
-        /* 待播卡片 */
         .two-card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 320px));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
-            justify-content: start;
             margin-top: 1rem;
         }
+        .upcoming-card {
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .upcoming-card:hover {
+            transform: translateY(-3px);
+        }
+        .upcoming-cover {
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            object-fit: cover;
+        }
+        .upcoming-body {
+            padding: 1rem;
+        }
+        .upcoming-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffb7c4;
+            margin-bottom: 0.5rem;
+        }
+        .upcoming-desc {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0.5rem 0;
+            line-height: 1.5;
+            max-height: 120px;
+            overflow-y: auto;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.5rem;
+            border-radius: 1rem;
+        }
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-top: 0.8rem;
+        }
+        .btn-link {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .btn-link:hover {
+            background: #971230;
+            border-color: #971230;
+        }
 
-        /* 图片墙 */
         .photo-wall {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
@@ -335,8 +381,7 @@
         .photo-item {
             border-radius: 1.5rem;
             overflow: hidden;
-            box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.12);
-            background: white;
+            background: rgba(0,0,0,0.4);
             aspect-ratio: 1 / 1;
         }
         .photo-item img {
@@ -345,13 +390,58 @@
             object-fit: cover;
         }
 
-        /* 垂直弹幕墙 (美化) */
+        /* 社交板块 */
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            margin: 1.2rem 0 1rem;
+        }
+        .social-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        .social-btn {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.7rem 1.6rem;
+            border-radius: 60px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            transition: 0.2s;
+        }
+        .social-btn:hover {
+            background: #971230;
+            border-color: #971230;
+        }
+        .social-img {
+            width: 100%;
+            max-width: 280px;
+            border-radius: 1rem;
+            margin-top: 0.3rem;
+            background: rgba(0,0,0,0.3);
+            padding: 4px;
+        }
+        .social-img img {
+            width: 100%;
+            height: auto;
+            border-radius: 0.8rem;
+        }
+
+        /* 弹幕墙 */
         .danmu-wall {
-            background: rgba(255, 245, 245, 0.6);
-            backdrop-filter: blur(4px);
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
             border-radius: 2rem;
             padding: 1rem;
-            border: 1px solid #ffd9e0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         .danmu-header {
             display: flex;
@@ -359,7 +449,7 @@
             gap: 8px;
             padding: 0 0.5rem 0.8rem;
             font-weight: 700;
-            color: #971230;
+            color: #ffb7c4;
         }
         .danmu-container {
             height: 280px;
@@ -371,7 +461,7 @@
             flex: 1;
             position: relative;
             overflow: hidden;
-            background: rgba(255,250,250,0.4);
+            background: rgba(0, 0, 0, 0.2);
             border-radius: 1.2rem;
         }
         .danmu-track-vertical {
@@ -393,75 +483,67 @@
             max-width: 90%;
             margin: 0 auto;
             word-break: break-word;
-            white-space: normal;
             text-align: center;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
         @keyframes scrollUp {
             0% { transform: translateY(100%); }
             100% { transform: translateY(-100%); }
         }
 
-        /* 社交板块美化 */
-        .social-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin: 1.2rem 0 1.8rem;
+        /* 代言网格 */
+        .endorsement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1.2rem;
         }
-        .social-btn {
-            background: white;
-            padding: 0.7rem 1.6rem;
-            border-radius: 60px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.2s;
-            border: 1px solid #ffdce2;
-            color: #4e3a40;
-        }
-        .news-ticker {
-            background: white;
-            border-radius: 2rem;
-            padding: 0.6rem 0.8rem;
-            margin: 1rem 0;
-            display: flex;
-            flex-wrap: nowrap;
-            overflow-x: auto;
-            gap: 1rem;
-        }
-        .news-item {
-            background: #fffafb;
-            padding: 0.3rem 1rem;
-            border-radius: 2rem;
-            font-size: 0.8rem;
-            white-space: nowrap;
-            border-left: 3px solid #971230;
-        }
-        .stats-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-        .stat-card {
-            background: white;
+        .endorsement-card {
             border-radius: 1.2rem;
-            padding: 0.8rem;
-            flex: 1 1 180px;
-            border: 1px solid #ffe2e7;
+            padding: 0.8rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.2s;
         }
-
+        .endorsement-card:hover {
+            border-color: #971230;
+            transform: translateX(3px);
+        }
+        .endorsement-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(151, 18, 48, 0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        .endorsement-info {
+            flex: 1;
+        }
+        .endorsement-brand {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: white;
+        }
+        .endorsement-role {
+            font-size: 0.7rem;
+            color: #ffcdd6;
+        }
+        .endorsement-link {
+            color: #ffb7c4;
+            text-decoration: none;
+            font-size: 0.75rem;
+        }
         .section-title {
             font-size: 1.4rem;
             font-weight: 700;
             margin: 1rem 0 1rem 0;
-            color: #971230;
+            color: #ffb7c4;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.4);
             display: inline-block;
-            border-bottom: 3px solid #fbc4d0;
             padding-bottom: 5px;
         }
 
@@ -484,52 +566,63 @@
             .side-nav { display: flex; flex-wrap: wrap; gap: 6px; padding: 0.5rem; }
             .nav-item { width: auto; padding: 0.4rem 1rem; }
             .main-content { padding: 1rem; }
-            .hero-banner { flex-direction: column; text-align: center; }
-            .danmu-container { height: 320px; flex-wrap: wrap; }
-            .danmu-col { min-width: 110px; }
+            .two-card-grid { grid-template-columns: 1fr; }
+            .endorsement-grid { grid-template-columns: 1fr; }
+            .social-img { max-width: 100%; }
+            /* 移动端隐藏滚动条同样生效 */
+            body {
+                scrollbar-width: none;
+            }
+            body::-webkit-scrollbar {
+                display: none;
+            }
         }
 
         footer {
             margin-top: 2rem;
             text-align: center;
             font-size: 0.7rem;
-            color: #b2909b;
-            border-top: 1px solid #ffe2e7;
+            color: rgba(255, 255, 255, 0.7);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
             padding-top: 1rem;
         }
     </style>
 </head>
 <body>
+    <!-- 移除了视频背景，改用 body 背景图片 + 遮罩 -->
+    <div class="overlay"></div>
+
 <div class="app-layout">
     <aside class="sidebar">
         <div class="sidebar-avatar">
             <div class="avatar-circle">
-                <img src="https://images.pexels.com/photos/37999767/pexels-photo-37999767.jpeg " alt="张凌赫">
+                <img src="https://images.pexels.com/photos/37999767/pexels-photo-37999767.jpeg" alt="张凌赫">
             </div>
             <div>
                 <h2>张凌赫</h2>
-                <div class="badge-role">演员 · 核桃的星星</div>
+                <div class="badge-role">演员 · 核桃国大王</div>
                 <div class="sidebar-bio">🎂 1997.12.30 无锡 | 190cm<br>🍬 粉丝名:核桃 · 凌赫红 #971230</div>
             </div>
         </div>
         <div class="side-nav">
-            <button class="nav-item active" data-tab="home"><i class="fas fa-home"></i> 首页</button>
-            <button class="nav-item" data-tab="dramas"><i class="fas fa-tv"></i> 剧集作品</button>
-            <button class="nav-item" data-tab="upcoming"><i class="fas fa-clock"></i> 待播作品</button>
+            <button class="nav-item active" data-tab="home"><i class="fas fa-home"></i> 核桃国</button>
+            <button class="nav-item" data-tab="dramas"><i class="fas fa-tv"></i> 作品那些年</button>
+            <button class="nav-item" data-tab="upcoming"><i class="fas fa-clock"></i> 等你预约</button>
             <button class="nav-item" data-tab="daily"><i class="fas fa-image"></i> 哥哥日常</button>
             <button class="nav-item" data-tab="social"><i class="fas fa-share-alt"></i> 社交账号</button>
+            <button class="nav-item" data-tab="endorse"><i class="fas fa-trophy"></i> 商务代言</button>
         </div>
         <div class="sidebar-footer">
-            <i class="fas fa-heart" style="color:#971230;"></i> 凌霄之上，赫然有声
+            <i class="fas fa-heart" style="color:#ffb7c4;"></i> 凌霄之上，赫然有声
         </div>
     </aside>
 
     <main class="main-content">
-        <!-- 首页面板 (丰富视觉) -->
+        <!-- 首页面板 -->
         <div class="tab-pane active-pane" id="homePane">
             <div class="hero-banner">
                 <div class="hero-text">
-                    <h3>张凌赫 · 核桃星球</h3>
+                    <h3>张凌赫 · 核桃国那些大事</h3>
                     <p><i class="fas fa-map-marker-alt"></i> 江苏无锡 · 190cm · 演员</p>
                     <div class="energy-item" style="display: inline-block; margin-top: 8px;">✨ 凌赫红应援进行中</div>
                 </div>
@@ -552,7 +645,7 @@
                 <div class="energy-bar">
                     <span class="energy-item"><i class="fas fa-fire"></i> 核桃能量值 ▰▰▰▰▰▰▰▰▰▰ 100%</span>
                     <span class="energy-item"><i class="fas fa-chart-line"></i> 待播期待榜 TOP1</span>
-                    <span class="energy-item"><i class="fas fa-comment"></i> 话题阅读 38.2亿</span>
+                    <span class="energy-item"><i class="fas fa-comment"></i> 话题阅读 1230+亿</span>
                 </div>
             </div>
         </div>
@@ -565,11 +658,11 @@
 
         <!-- 待播作品 -->
         <div class="tab-pane" id="upcomingPane">
-            <div class="section-title">🎵 待播作品 · 原声带</div>
+            <div class="section-title">🎵 待播作品 · 预约开启</div>
             <div id="upcomingGrid" class="two-card-grid"></div>
         </div>
 
-        <!-- 哥哥日常 (弹幕完整显示) -->
+        <!-- 哥哥日常 -->
         <div class="tab-pane" id="dailyPane">
             <div class="section-title">📸 日常瞬间</div>
             <div id="photoWall" class="photo-wall"></div>
@@ -579,44 +672,57 @@
             </div>
         </div>
 
-        <!-- 社交账号 (美化丰富) -->
+        <!-- 社交账号 -->
         <div class="tab-pane" id="socialPane">
             <div class="section-title">🔗 全网寻找张凌赫</div>
-            <div id="socialBtns" class="social-links"></div>
-            <div class="news-ticker" id="newsTicker"></div>
-            <div class="stats-grid" id="statsGrid"></div>
-            <div style="background: #fff3f5; border-radius: 1.5rem; padding: 12px; text-align: center; margin-top: 1rem;">
-                <i class="fas fa-shield-alt"></i> 官方认证 · 谨防假冒
-            </div>
+            <div id="socialList" class="social-links"></div>
         </div>
-        <footer>© 张凌赫 · 核桃应援站 | 凌赫红 #971230 | 凌霄之上，赫然有声</footer>
+
+        <!-- 商务代言板块 -->
+        <div class="tab-pane" id="endorsePane">
+            <div class="section-title">✨ 哥哥代言 · 品牌荣耀</div>
+            <div id="endorsementGrid" class="endorsement-grid"></div>
+        </div>
+
+        <footer>© 意面想你·制作 | 我就这样，一面看水 ，一面......</footer>
     </main>
 </div>
 
 <script>
-    // 剧集数据 (腾讯视频搜索)
+    // ======================= 数据定义 =======================
     const dramasData = [
-        { title: "少女大人 饰 裴昭", cover: " https://images.pexels.com/photos/37999757/pexels-photo-37999757.jpeg ", link: "https://v.qq.com/x/search/?q=%E5%B0%91%E5%A5%B3%E5%A4%A7%E4%BA%BA" },
-        { title: "心动的瞬间 饰 麦司冲", cover: " https://images.pexels.com/photos/37999764/pexels-photo-37999764.jpeg ", link: "https://v.qq.com/x/search/?q=%E5%BF%83%E5%8A%A8%E7%9A%84%E7%9E%AC%E9%97%B4" },
-        { title: "我和我的时光少年 饰 江皓月", cover: " https://images.pexels.com/photos/37999752/pexels-photo-37999752.jpeg ", link: "https://v.qq.com/x/search/?q=%E6%88%91%E5%92%8C%E6%88%91%E7%9A%84%E6%97%B6%E5%85%89%E5%B0%91%E5%B9%B4" },
-        { title: "完美的他 饰 许念", cover: " https://images.pexels.com/photos/37999749/pexels-photo-37999749.jpeg ", link: "https://v.qq.com/x/search/?q=%E5%AE%8C%E7%BE%8E%E7%9A%84%E4%BB%96" },
-        { title: "百炼成钢 饰 光未然", cover: " https://images.pexels.com/photos/37999755/pexels-photo-37999755.jpeg ", link: "https://v.qq.com/x/search/?q=%E7%99%BE%E7%82%BC%E6%88%90%E9%92%A2" },
-        { title: "苍兰诀 饰 长珩", cover: " https://images.pexels.com/photos/38000125/pexels-photo-38000125.jpeg ", link: "https://v.qq.com/x/search/?q=%E8%8B%8D%E5%85%B0%E8%AF%80" },
+        { title: "少女大人 饰 裴昭", cover: "https://images.pexels.com/photos/37999757/pexels-photo-37999757.jpeg", link: "https://v.qq.com/x/search/?q=%E5%B0%91%E5%A5%B3%E5%A4%A7%E4%BA%BA" },
+        { title: "心动的瞬间 饰 麦司冲", cover: "https://images.pexels.com/photos/37999764/pexels-photo-37999764.jpeg", link: "https://v.qq.com/x/search/?q=%E5%BF%83%E5%8A%A8%E7%9A%84%E7%9E%AC%E9%97%B4" },
+        { title: "我和我的时光少年 饰 江皓月", cover: "https://images.pexels.com/photos/37999752/pexels-photo-37999752.jpeg", link: "https://v.qq.com/x/search/?q=%E6%88%91%E5%92%8C%E6%88%91%E7%9A%84%E6%97%B6%E5%85%89%E5%B0%91%E5%B9%B4" },
+        { title: "完美的他 饰 许念", cover: "https://images.pexels.com/photos/37999749/pexels-photo-37999749.jpeg", link: "https://v.qq.com/x/search/?q=%E5%AE%8C%E7%BE%8E%E7%9A%84%E4%BB%96" },
+        { title: "百炼成钢 饰 光未然", cover: "https://images.pexels.com/photos/37999754/pexels-photo-37999754.jpeg", link: "https://v.qq.com/x/search/?q=%E7%99%BE%E7%82%BC%E6%88%90%E9%92%A2" },
+        { title: "苍兰诀 饰 长珩", cover: "https://images.pexels.com/photos/38001807/pexels-photo-38001807.jpeg", link: "https://v.qq.com/x/search/?q=%E8%8B%8D%E5%85%B0%E8%AF%80" },
         { title: "云之羽 饰 宫子羽", cover: "https://images.pexels.com/photos/37999770/pexels-photo-37999770.jpeg", link: "https://v.qq.com/x/search/?q=%E4%BA%91%E4%B9%8B%E7%BE%BD" },
-        { title: "他从火光中走来 饰 林启", cover: " https://images.pexels.com/photos/37999760/pexels-photo-37999760.jpeg ", link: "https://v.qq.com/x/search/?q=%E4%BB%96%E4%BB%8E%E7%81%AB%E5%85%89%E4%B8%AD%E8%B5%B0%E6%9D%A5" },
+        { title: "他从火光中走来 饰 林启", cover: "https://images.pexels.com/photos/37999760/pexels-photo-37999760.jpeg", link: "https://v.qq.com/x/search/?q=%E4%BB%96%E4%BB%8E%E7%81%AB%E5%85%89%E4%B8%AD%E8%B5%B0%E6%9D%A5" },
         { title: "虎鹤妖师录 饰 祁晓轩", cover: "https://images.pexels.com/photos/38000125/pexels-photo-38000125.jpeg", link: "https://v.qq.com/x/search/?q=%E8%99%8E%E9%B9%A4%E5%A6%96%E5%B8%88%E5%BD%95" },
         { title: "宁安如梦 饰 谢危", cover: "https://images.pexels.com/photos/38000140/pexels-photo-38000140.jpeg", link: "https://v.qq.com/x/search/?q=%E5%AE%81%E5%AE%89%E5%A6%82%E6%A2%A6" },
-        { title: "狐妖小红娘月红篇 饰 胡尾生", cover: " https://images.pexels.com/photos/37999766/pexels-photo-37999766.jpeg ", link: "https://v.qq.com/x/search/?q=%E7%8B%90%E5%A6%96%E5%B0%8F%E7%BA%A2%E5%A8%98%E6%9C%88%E7%BA%A2%E7%AF%87" },
-        { title: "度华年 饰 裴文宣", cover: " https://images.pexels.com/photos/37999769/pexels-photo-37999769.jpeg ", link: "https://v.qq.com/x/search/?q=%E5%BA%A6%E5%8D%8E%E5%B9%B4" },
-        { title: "四海重明 饰 嵇炀", cover: " https://images.pexels.com/photos/37999750/pexels-photo-37999750.jpeg ", link: "https://v.qq.com/x/search/?q=%E5%9B%9B%E6%B5%B7%E9%87%8D%E6%98%8E" },
-        { title: "爱你 饰 何苏叶", cover: " https://images.pexels.com/photos/37999768/pexels-photo-37999768.jpeg ", link: "https://v.qq.com/x/search/?q=%E7%88%B1%E4%BD%A0%20%E4%BD%95%E8%8B%8F%E5%8F%B6" },
-        { title: "樱桃琥珀 饰 蒋峤西", cover: " https://images.pexels.com/photos/37999761/pexels-photo-37999761.jpeg ", link: "https://v.qq.com/x/search/?q=%E6%A8%B1%E6%A1%83%E7%90%A5%E7%8F%80" },
-        { title: "逐玉 饰 谢征", cover: " https://images.pexels.com/photos/38000260/pexels-photo-38000260.jpeg ", link: "https://v.qq.com/x/search/?q=%E9%80%90%E7%8E%89" }
+        { title: "狐妖小红娘月红篇 饰 胡尾生", cover: "https://images.pexels.com/photos/37999766/pexels-photo-37999766.jpeg", link: "https://v.qq.com/x/search/?q=%E7%8B%90%E5%A6%96%E5%B0%8F%E7%BA%A2%E5%A8%98%E6%9C%88%E7%BA%A2%E7%AF%87" },
+        { title: "度华年 饰 裴文宣", cover: "https://images.pexels.com/photos/37999769/pexels-photo-37999769.jpeg", link: "https://v.qq.com/x/search/?q=%E5%BA%A6%E5%8D%8E%E5%B9%B4" },
+        { title: "四海重明 饰 嵇炀", cover: "https://images.pexels.com/photos/37999750/pexels-photo-37999750.jpeg", link: "https://v.qq.com/x/search/?q=%E5%9B%9B%E6%B5%B7%E9%87%8D%E6%98%8E" },
+        { title: "爱你 饰 何苏叶", cover: "https://images.pexels.com/photos/37999768/pexels-photo-37999768.jpeg", link: "https://v.qq.com/x/search/?q=%E7%88%B1%E4%BD%A0%20%E4%BD%95%E8%8B%8F%E5%8F%B6" },
+        { title: "樱桃琥珀 饰 蒋峤西", cover: "https://images.pexels.com/photos/37999761/pexels-photo-37999761.jpeg", link: "https://v.qq.com/x/search/?q=%E6%A8%B1%E6%A1%83%E7%90%A5%E7%8F%80" },
+        { title: "逐玉 饰 谢征", cover: "https://images.pexels.com/photos/38000260/pexels-photo-38000260.jpeg", link: "https://v.qq.com/x/search/?q=%E9%80%90%E7%8E%89" }
     ];
 
-    const upcomingData = [
-        { name: "《这一秒过火》 主题曲", sub: "慕容清峄 · 深情献唱", cover: "https://picsum.photos/id/147/400/240", musicLink: "https://y.qq.com/n/ryqq/search?w=%E8%BF%99%E4%B8%80%E7%A7%92%E8%BF%87%E7%81%AB" },
-        { name: "《归鸾》 原声带", sub: "萧厉 · 古风磅礴", cover: "https://picsum.photos/id/151/400/240", musicLink: "https://y.qq.com/n/ryqq/search?w=%E5%BD%92%E9%B8%BE" }
+    const upcomingProjects = [
+        {
+            name: "《这一秒过火》",
+            cover: "https://images.pexels.com/photos/37999766/pexels-photo-37999766.jpeg",
+            watchLink: "https://weibo.cn/sinaurl?u=https%3A%2F%2Fwww.iqiyi.com%2Fa_ng9j9rno7x.html",
+            reserveLink: "https://wbox.h5.weibo.cn/12v4p4vrze?id=12v4p4vrze&source=wbox&act_id=episode&page=pages/details/details&pid=4002&program_type=0",
+            story: "血色初遇：少年慕容清峄被任素素救下，却致任家灭门；假死决裂：成年后相爱，任素素为复仇假死遁逃，慕容清峄悔恨疯魔三年；禁忌重逢：任素素以兄嫂身份回归，二人陷强取豪夺式拉扯（雨夜强吻、盥洗室对峙等）；家国终局：兄长遇害促成联手抗敌，男主牺牲，女主南下。"
+        },
+        {
+            name: "《归鸾》",
+            cover: "https://images.pexels.com/photos/37999764/pexels-photo-37999764.jpeg",
+            reserveLink: "https://weibo.cn/sinaurl?u=https%3A%2F%2Fv.qq.com%2Fx%2Fcover%2Fmzc00200u13fyas.html",
+            story: "踏破荆棘，以孤勇为刃；历遍爱恨，以无言为凭。半生纠葛，各怀执念。光影明灭处，是生死相搏的宿命，亦是欲语还休的归处。#归鸾# 有期，敬请期待！领衔主演：@张凌赫z"
+        }
     ];
 
     const dailyPhotos = [
@@ -633,33 +739,72 @@
         "🌊 活成自己想要的样子", "🍬 核桃是我前进动力", "🔥 在自己的节奏里成长。"
     ];
 
-    const socialAccounts = [
-        { name: "微博", icon: '<i class="fab fa-weibo"></i>', link: "https://weibo.com/n/%E5%BC%A0%E5%87%8C%E8%B5%ABz" },
-        { name: "抖音", icon: '<i class="fab fa-tiktok"></i>', link: "https://v.douyin.com/6OgVHqC3igc/" },
-        { name: "小红书", icon: '<i class="fas fa-heart" style="color:#f76b8a;"></i>', link: "https://www.xiaohongshu.com/user/profile/600e2e43000000000101c66e" },
-        { name: "INS", icon: '<i class="fab fa-instagram"></i>', link: "https://www.instagram.com/zhanglinghe__1230" },
-        { name: "工作室", icon: '<i class="fas fa-building"></i>', link: "https://weibo.com/n/%E5%BC%A0%E5%87%8C%E8%B5%AB%E5%B7%A5%E4%BD%9C%E5%AE%A4official" }
+    const socialData = [
+        { name: "微博", icon: '<i class="fab fa-weibo"></i>', link: "https://weibo.com/n/%E5%BC%A0%E5%87%8C%E8%B5%ABz", img: "https://images.pexels.com/photos/37999748/pexels-photo-37999748.jpeg" },
+        { name: "抖音", icon: '<i class="fab fa-tiktok"></i>', link: "https://v.douyin.com/6OgVHqC3igc/", img: "https://images.pexels.com/photos/37999749/pexels-photo-37999749.jpeg" },
+        { name: "小红书", icon: '<i class="fas fa-heart" style="color:#f76b8a;"></i>', link: "https://www.xiaohongshu.com/user/profile/600e2e43000000000101c66e", img: "https://images.pexels.com/photos/37999750/pexels-photo-37999750.jpeg" },
+        { name: "INS", icon: '<i class="fab fa-instagram"></i>', link: "https://www.instagram.com/zhanglinghe__1230", img: "https://images.pexels.com/photos/37999753/pexels-photo-37999753.jpeg" },
+        { name: "工作室", icon: '<i class="fas fa-building"></i>', link: "https://weibo.com/n/%E5%BC%A0%E5%87%8C%E8%B5%AB%E5%B7%A5%E4%BD%9C%E5%AE%A4official", img: "https://images.pexels.com/photos/37999764/pexels-photo-37999764.jpeg" }
     ];
 
-    const newsItems = [
-        { icon: "fas fa-video", text: "《爱你》何苏叶剧照曝光", date: "06-07" },
-        { icon: "fas fa-music", text: "《归鸾》原声带即将上线", date: "06-05" },
-        { icon: "fas fa-newspaper", text: "登上《时尚芭莎》电子刊", date: "06-03" }
-    ];
-
-    const statsData = [
-        { platform: "微博", icon: "fab fa-weibo", desc: "昨日樱桃琥珀杀青花絮，互动百万", time: "06-06" },
-        { platform: "抖音", icon: "fab fa-tiktok", desc: "逐玉片场vlog获赞58w", time: "06-04" }
+    const endorsements = [
+        { brand: "GUCCI", role: "古驰品牌大使 (成衣箱包/香氛)", weiboName: "GUCCI" },
+        { brand: "BVLGARI宝格丽", role: "宝格丽品牌大使 (珠宝/腕表)", weiboName: "BVLGARI宝格丽" },
+        { brand: "兰蔻LANCOME", role: "兰蔻护肤大使", weiboName: "兰蔻LANCOME" },
+        { brand: "CeraVe适乐肤", role: "适乐肤品牌代言人 (身体护理类)", weiboName: "CeraVe适乐肤" },
+        { brand: "颐莲", role: "颐莲品牌喷雾全球代言人", weiboName: "颐莲" },
+        { brand: "相宜本草", role: "相宜本草面膜代言人", weiboName: "相宜本草" },
+        { brand: "联想moto", role: "联想手机品牌代言人", weiboName: "联想moto" },
+        { brand: "联想中国", role: "联想品牌大使", weiboName: "联想中国" },
+        { brand: "MOLSION陌森眼镜", role: "陌森眼镜品牌代言人", weiboName: "MOLSION陌森眼镜" },
+        { brand: "PUMA彪马", role: "PUMA大中华区品牌代言人", weiboName: "PUMA彪马" },
+        { brand: "Lee中国", role: "Lee品牌亚太区代言人", weiboName: "Lee中国" },
+        { brand: "BELLE_百丽", role: "百丽品牌代言人", weiboName: "BELLE_百丽" },
+        { brand: "王老吉官方微博", role: "王老吉品牌全球代言人", weiboName: "王老吉官方微博" },
+        { brand: "金典鲜牛奶", role: "伊利低温鲜奶代言人", weiboName: "金典鲜牛奶" },
+        { brand: "拉面范", role: "拉面范全球品牌代言人", weiboName: "拉面范" },
+        { brand: "华帝公司", role: "华帝品牌代言人", weiboName: "华帝公司" },
+        { brand: "Purcotton全棉时代", role: "全棉时代家居休闲服饰全球代言人", weiboName: "Purcotton全棉时代" },
+        { brand: "野生救援WildAid", role: "野生救援公益大使（含Discovery探索频道合作）", weiboName: "野生救援WildAid" }
     ];
 
     function renderDramas() {
         const g = document.getElementById('dramasGrid');
         if(g) g.innerHTML = dramasData.map(item => `<a href="${item.link}" target="_blank" class="media-card"><img class="card-cover" src="${item.cover}" loading="lazy"><div class="card-info"><div class="card-title">${item.title}</div></div></a>`).join('');
     }
+
     function renderUpcoming() {
-        const u = document.getElementById('upcomingGrid');
-        if(u) u.innerHTML = upcomingData.map(item => `<a href="${item.musicLink}" target="_blank" class="media-card"><img class="card-cover" src="${item.cover}"><div class="card-info"><div class="card-title">🎧 ${item.name}</div><div style="font-size:0.7rem;color:#971230;">${item.sub}</div></div></a>`).join('');
+        const container = document.getElementById('upcomingGrid');
+        if(!container) return;
+        let html = '';
+        html += `
+            <div class="upcoming-card">
+                <img class="upcoming-cover" src="${upcomingProjects[0].cover}" alt="这一秒过火">
+                <div class="upcoming-body">
+                    <div class="upcoming-title">${upcomingProjects[0].name}</div>
+                    <div class="upcoming-desc">${upcomingProjects[0].story}</div>
+                    <div class="btn-group">
+                        <a href="${upcomingProjects[0].watchLink}" target="_blank" class="btn-link"><i class="fas fa-play"></i> 立即观看</a>
+                        <a href="${upcomingProjects[0].reserveLink}" target="_blank" class="btn-link"><i class="fas fa-bell"></i> 预约提醒</a>
+                    </div>
+                </div>
+            </div>
+        `;
+        html += `
+            <div class="upcoming-card">
+                <img class="upcoming-cover" src="${upcomingProjects[1].cover}" alt="归鸾">
+                <div class="upcoming-body">
+                    <div class="upcoming-title">${upcomingProjects[1].name}</div>
+                    <div class="upcoming-desc">${upcomingProjects[1].story}</div>
+                    <div class="btn-group">
+                        <a href="${upcomingProjects[1].reserveLink}" target="_blank" class="btn-link"><i class="fas fa-calendar-check"></i> 预约追剧</a>
+                    </div>
+                </div>
+            </div>
+        `;
+        container.innerHTML = html;
     }
+
     function renderDaily() {
         const wall = document.getElementById('photoWall');
         if(wall) wall.innerHTML = dailyPhotos.map(url => `<div class="photo-item"><img src="${url}"></div>`).join('');
@@ -679,18 +824,52 @@
             container.appendChild(colDiv);
         }
     }
+
     function renderSocial() {
-        const sDiv = document.getElementById('socialBtns');
-        if(sDiv) sDiv.innerHTML = socialAccounts.map(s => `<a href="${s.link}" target="_blank" class="social-btn">${s.icon} <span>${s.name}</span></a>`).join('');
-        const ticker = document.getElementById('newsTicker');
-        if(ticker) ticker.innerHTML = newsItems.map(n => `<div class="news-item"><i class="${n.icon}"></i> ${n.text} <span class="news-date">${n.date}</span></div>`).join('');
-        const stats = document.getElementById('statsGrid');
-        if(stats) stats.innerHTML = statsData.map(stat => `<div class="stat-card"><div class="stat-platform"><i class="${stat.icon}"></i> ${stat.platform}</div><div class="stat-desc">${stat.desc}</div><div class="stat-time">${stat.time}</div></div>`).join('');
+        const container = document.getElementById('socialList');
+        if(!container) return;
+        let html = '';
+        socialData.forEach(s => {
+            html += `
+                <div class="social-item">
+                    <a href="${s.link}" target="_blank" class="social-btn">${s.icon} <span>${s.name}</span></a>
+                    <div class="social-img"><img src="${s.img}" alt="${s.name}图标" loading="lazy"></div>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+    }
+
+    function renderEndorsements() {
+        const endorseDiv = document.getElementById('endorsementGrid');
+        if(!endorseDiv) return;
+        let html = '';
+        endorsements.forEach(e => {
+            const weiboLink = `https://weibo.com/n/${encodeURIComponent(e.weiboName)}`;
+            html += `
+                <div class="endorsement-card">
+                    <div class="endorsement-icon"><i class="fas fa-star"></i></div>
+                    <div class="endorsement-info">
+                        <div class="endorsement-brand">${e.brand}</div>
+                        <div class="endorsement-role">${e.role}</div>
+                        <a href="${weiboLink}" target="_blank" class="endorsement-link"><i class="fab fa-weibo"></i> 微博直达</a>
+                    </div>
+                </div>
+            `;
+        });
+        endorseDiv.innerHTML = html;
     }
 
     function setupTabs() {
         const btns = document.querySelectorAll('.nav-item');
-        const panes = { home:document.getElementById('homePane'), dramas:document.getElementById('dramasPane'), upcoming:document.getElementById('upcomingPane'), daily:document.getElementById('dailyPane'), social:document.getElementById('socialPane') };
+        const panes = {
+            home: document.getElementById('homePane'),
+            dramas: document.getElementById('dramasPane'),
+            upcoming: document.getElementById('upcomingPane'),
+            daily: document.getElementById('dailyPane'),
+            social: document.getElementById('socialPane'),
+            endorse: document.getElementById('endorsePane')
+        };
         function switchTab(id){
             Object.values(panes).forEach(p=>p?.classList.remove('active-pane'));
             if(panes[id]) panes[id].classList.add('active-pane');
@@ -704,7 +883,13 @@
         const dailyPane = document.getElementById('dailyPane');
         if(dailyPane && dailyPane.classList.contains('active-pane')) renderDaily();
     });
-    renderDramas(); renderUpcoming(); renderDaily(); renderSocial(); setupTabs();
+
+    renderDramas();
+    renderUpcoming();
+    renderDaily();
+    renderSocial();
+    renderEndorsements();
+    setupTabs();
 </script>
 </body>
 </html>
