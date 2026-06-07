@@ -795,10 +795,9 @@
     <div class="music-control" id="musicControl">
         <i class="fas fa-music"></i>
     </div>
-    <!-- 背景音乐：使用本地 MP4 文件（请将文件与网页放在同一目录） -->
+    <!-- 背景音乐：使用 Raw 链接，修正了空格和 type 错误 -->
     <audio id="bgMusic" loop preload="auto">
-        <source src=" https://raw.githubusercontent.com/reinyourheart233-bot/-/main/bg.mp3" type="audio/mpeg
-4">
+        <source src="https://raw.githubusercontent.com/reinyourheart233-bot/-/main/bg.mp3" type="audio/mpeg">
     </audio>
 
     <div class="app-layout">
@@ -890,37 +889,46 @@
     </div>
 
     <script>
-        // 背景音乐控制逻辑
+        // ======================= 更可靠的音乐控制逻辑 =======================
         const musicBtn = document.getElementById('musicControl');
         const bgAudio = document.getElementById('bgMusic');
         let isPlaying = false;
 
-        musicBtn.addEventListener('click', () => {
-            if (isPlaying) {
-                bgAudio.pause();
-                musicBtn.innerHTML = '<i class="fas fa-music"></i>';
-                isPlaying = false;
-            } else {
-                bgAudio.play().catch(e => {
-                    console.log('播放失败，可能需要用户交互', e);
-                    alert("请点击页面任意位置后再试，浏览器限制了自动播放。");
-                });
-                musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                isPlaying = true;
-            }
-        });
-
-        // 尝试自动播放（可能会被阻止）
-        bgAudio.muted = false;
+        // 先静音自动播放（利用浏览器允许静音自动播放的策略）
+        bgAudio.muted = true;
         bgAudio.play().then(() => {
+            console.log('背景音乐已静音自动播放');
+            // 自动播放成功后，按钮图标显示为播放状态（但实际是静音的）
             isPlaying = true;
             musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
-        }).catch(() => {
+        }).catch(e => {
+            console.log('静音自动播放失败，可能需要用户交互', e);
             isPlaying = false;
             musicBtn.innerHTML = '<i class="fas fa-music"></i>';
         });
 
-        // 数据渲染（完整保留）
+        // 用户点击按钮：切换播放/暂停，并切换静音状态
+        musicBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                // 当前正在播放：暂停
+                bgAudio.pause();
+                musicBtn.innerHTML = '<i class="fas fa-music"></i>';
+                isPlaying = false;
+            } else {
+                // 当前暂停：播放，并取消静音
+                bgAudio.play().then(() => {
+                    bgAudio.muted = false;
+                    musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    isPlaying = true;
+                }).catch(e => {
+                    console.log('点击后播放失败', e);
+                    alert("播放失败，请刷新后重试。");
+                });
+            }
+        });
+        // ==================================================
+
+        // 以下为页面原有渲染逻辑，保持不变
         const dramasData = [
             { title: "少女大人 饰 裴昭", cover: "https://images.pexels.com/photos/37999757/pexels-photo-37999757.jpeg", link: "https://v.qq.com/x/search/?q=%E5%B0%91%E5%A5%B3%E5%A4%A7%E4%BA%BA" },
             { title: "心动的瞬间 饰 麦司冲", cover: "https://images.pexels.com/photos/37999764/pexels-photo-37999764.jpeg", link: "https://v.qq.com/x/search/?q=%E5%BF%83%E5%8A%A8%E7%9A%84%E7%9E%AC%E9%97%B4" },
@@ -1089,4 +1097,3 @@
     </script>
 </body>
 </html>
-```
